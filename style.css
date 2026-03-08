@@ -1,5 +1,5 @@
 body{
-    background:#0b1d2a;
+    background:#111;
     height:100vh;
     display:flex;
     justify-content:center;
@@ -7,45 +7,40 @@ body{
     overflow:hidden;
 }
 
-/* stem grows */
-.stem{
-    width:6px;
-    height:0;
-    background:green;
-    animation:growStem 3s forwards;
-}
-
-@keyframes growStem{
-    from{height:0;}
-    to{height:220px;}
-}
-
 .garden{
     position:relative;
 }
 
-.flower{
+/* stem animation */
+.stem{
+    width:8px;
+    height:0;
+    background:#3aa655;
+    border-radius:5px;
+    animation:growStem 3s forwards;
+}
+
+@keyframes growStem{
+    to{ height:250px; }
+}
+
+#flower{
     position:absolute;
-    bottom:220px;
+    bottom:250px;
     left:0;
 }
 
-/* heart petals */
 .heart{
     position:absolute;
-    font-size:28px;
+    font-size:10px;
+    color:#ff4da6;
     opacity:0;
-    transform:translate(0,0) scale(0);
-    animation:bloom 2s forwards;
+    transform:scale(0);
+    animation:bloom 1.5s forwards;
 }
 
-/* petals spread then stay */
 @keyframes bloom{
-    0%{
-        opacity:0;
-        transform:translate(0,0) scale(0);
-    }
-    100%{
+    to{
         opacity:1;
         transform:translate(var(--x),var(--y)) scale(1);
     }
