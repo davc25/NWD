@@ -15,14 +15,11 @@ let hearts = [];
 function drawHeart(x,y,size,rot){
 
 ctx.save();
-
 ctx.translate(x,y);
 ctx.rotate(rot);
 ctx.scale(size,size);
 
 ctx.beginPath();
-
-ctx.moveTo(0,0);
 
 for(let t=0;t<Math.PI*2;t+=0.1){
 
@@ -89,6 +86,7 @@ drawHeart(h.x,h.y,h.size,h.angle+Math.PI/2);
 
 if(h.grow){
 h.size+=0.02;
+
 if(h.size>0.8){
 h.grow=false;
 spawnBloom(h);
