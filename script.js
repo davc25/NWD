@@ -29,4 +29,4 @@ function bloomLily(){
     }
 }
 
-setTimeout(bloomLily,3000);
+setTimeout(bloomLily,3000); 
