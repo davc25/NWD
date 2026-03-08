@@ -1,33 +1,43 @@
 const flower = document.getElementById("flower");
 
-function createPetal(angle, distance, delay){
+function createHeart(x,y,delay){
 
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤";
 
-    const x = Math.cos(angle) * distance + "px";
-    const y = Math.sin(angle) * distance + "px";
+    heart.style.setProperty("--x",x+"px");
+    heart.style.setProperty("--y",y+"px");
 
-    heart.style.setProperty("--x", x);
-    heart.style.setProperty("--y", y);
-
-    heart.style.animationDelay = delay + "s";
+    heart.style.animationDelay = delay+"s";
 
     flower.appendChild(heart);
 }
 
-function bloom(){
+function createPetal(angle){
 
-    const petals = 8;
-    const radius = 50;
+    for(let r=10; r<90; r+=6){
 
-    for(let i=0;i<petals;i++){
+        for(let t=-0.6; t<=0.6; t+=0.12){
 
-        const angle = (i/petals) * Math.PI * 2;
+            let x = Math.cos(angle)*r + Math.sin(angle)*t*60;
+            let y = Math.sin(angle)*r - Math.cos(angle)*t*40;
 
-        createPetal(angle, radius, i*0.15);
+            createHeart(x,y,Math.random()*2);
+        }
     }
 }
 
-setTimeout(bloom,3000);
+function bloomLily(){
+
+    let petals = 6;
+
+    for(let i=0;i<petals;i++){
+
+        let angle = (Math.PI*2/petals)*i - Math.PI/2;
+
+        createPetal(angle);
+    }
+}
+
+setTimeout(bloomLily,3000);
